@@ -37,6 +37,8 @@ namespace Football
             int team2Goals = 0;
             Goal goal = new Goal();
 
+
+            //Younger Team has advantage
             if (Team1.AvarageAge < Team2.AvarageAge) 
             {
                 teamAdvantage = 1;
@@ -51,20 +53,20 @@ namespace Football
             }
 
             //90 Minute Game
-            for (int i = 0; i < 90; i++)
+            for (int i = 1; i < 91; i++)
             {
                 if (teamAdvantage == 1)
                 {
-                    if (rnd.Next(1, 100) > 90)
+                    if (rnd.Next(1, 100) > 93)
                     {
-                        goal.Player = Team1.Players[rnd.Next(1, Team1.Players.Count)].Name;
+                        goal.Player = Team1.Players[rnd.Next(1, Team1.Players.Length)].Name;
                         goal.Minute = i;
                         GameResult +=  goal.Player + " scored in " + goal.Minute + " minute for Team 1. \n";
                         team1Goals++;
                     }
-                    if (rnd.Next(1, 100) > 95)
+                    if (rnd.Next(1, 100) > 98)
                     {
-                        goal.Player = Team2.Players[rnd.Next(1, Team2.Players.Count)].Name;
+                        goal.Player = Team2.Players[rnd.Next(1, Team2.Players.Length)].Name;
                         goal.Minute = i;
                         GameResult += goal.Player + " scored in " + goal.Minute + " minute for Team 2. \n";
                         team2Goals++;
@@ -72,16 +74,16 @@ namespace Football
                 }
                 else if(teamAdvantage == 2)
                 {
-                    if (rnd.Next(1, 100) > 95)
+                    if (rnd.Next(1, 100) > 98)
                     {
-                        goal.Player = Team1.Players[rnd.Next(1, Team1.Players.Count)].Name;
+                        goal.Player = Team1.Players[rnd.Next(1, Team1.Players.Length)].Name;
                         goal.Minute = i;
                         GameResult += goal.Player + " scored in " + goal.Minute + " minute for Team 1. \n";
                         team1Goals++;
                     }
-                    if (rnd.Next(1, 100) > 90)
+                    if (rnd.Next(1, 100) > 93)
                     {
-                        goal.Player = Team2.Players[rnd.Next(1, Team2.Players.Count)].Name;
+                        goal.Player = Team2.Players[rnd.Next(1, Team2.Players.Length)].Name;
                         goal.Minute = i;
                         GameResult += goal.Player + " scored in " + goal.Minute + " minute for Team 2. \n";
                         team2Goals++;
@@ -91,14 +93,14 @@ namespace Football
                 {
                     if (rnd.Next(1, 100) > 98)
                     {
-                        goal.Player = Team1.Players[rnd.Next(1, Team1.Players.Count)].Name;
+                        goal.Player = Team1.Players[rnd.Next(1, Team1.Players.Length)].Name;
                         goal.Minute = i;
                         GameResult += goal.Player + " scored in " + goal.Minute + " minute for Team 1. \n";
                         team1Goals++;
                     }
                     if (rnd.Next(1, 100) > 98)
                     {
-                        goal.Player = Team2.Players[rnd.Next(1, Team2.Players.Count)].Name;
+                        goal.Player = Team2.Players[rnd.Next(1, Team2.Players.Length)].Name;
                         goal.Minute = i;
                         GameResult += goal.Player + " scored in " + goal.Minute + " minute for Team 2. \n";
                         team2Goals++;
@@ -119,7 +121,7 @@ namespace Football
                 Winner = "Draw";
             }
 
-            System.Threading.Thread.Sleep(100);
+            System.Threading.Thread.Sleep(10);
             return GameResult + "\n Team 1: " + team1Goals + " | Team 2: " + team2Goals + "\n The Winner is " + Winner;
         }
     }
